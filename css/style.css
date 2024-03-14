@@ -20,6 +20,16 @@
 
 }
 
+.input-box{
+    width: 90%;
+    display: flex;
+    
+}
+
+
+.input-box span{
+    margin-left: auto;
+}
 #select-difficult {
     padding: 4px;
     background-color: transparent;

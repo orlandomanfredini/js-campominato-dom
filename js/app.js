@@ -34,101 +34,114 @@ let btnStart = document.querySelector('.btn-start'); // dom element
 let boxCell = document.querySelector('.main-box')
 
 
-    // creo ascolto evento clic sul button gioca ora
-    // da questo ascolto ne conseguono tutte le logiche 
-    btnStart.addEventListener('click', function(){
-        // creo collegamento con la select (quando l'utente clicca sul button, js legge la value della select)
-        let interation = parseInt(document.getElementById('select').value); // dom element
-        
-        // dichiaro l'elemento del dom (dove appendo la griglia) stringa vuota
-        // cosi se cambio valore della select mi genera una griglia nuova che sosrituisce la precedente
-        boxCell.innerHTML='';
-        
-        
-        // creo ciclo in relazione della value della select 
-        for(let i = 1; i < interation; i++){
-            // creo elemento dom
-            let cell = document.createElement('button')
-            // gli stampo il suo numero
-            cell.innerHTML += [i]
-            
-        
-           if(interation === 50){
+let gameOver = false;
+
+// creo ascolto evento clic sul button gioca ora
+// da questo ascolto ne conseguono tutte le logiche 
+btnStart.addEventListener('click', function () {
+    // creo collegamento con la select (quando l'utente clicca sul button, js legge la value della select)
+    let interation = parseInt(document.getElementById('select').value); // dom element
+
+    // dichiaro l'elemento del dom (dove appendo la griglia) stringa vuota
+    // cosi se cambio valore della select mi genera una griglia nuova che sosrituisce la precedente
+    boxCell.innerHTML = '';
+
+
+    // creo ciclo in relazione della value della select 
+    for (let i = 1; i < interation; i++) {
+        // creo elemento dom
+        let cell = document.createElement('button')
+        // gli stampo il suo numero
+        cell.innerHTML += [i]
+
+
+        if (interation === 50) {
             cell.classList.add('level-3')
             boxCell.append(cell)
 
-           }else if(interation === 82){
+        } else if (interation === 82) {
             cell.classList.remove('level-3')
             cell.classList.add('level-2')
             boxCell.append(cell)
-           }else{
+        } else {
             cell.classList.remove('level-2')
             cell.classList.add('cell')
             boxCell.append(cell)
-           }
-            
-   
+        }
+
+
         // ***** COLORE ******
 
-    // aggiungo evento ascolto sulla singola cella con classe .cell
-    cell.addEventListener('click', function(){
-        for(let p = 0; p < arrayBomb.length; p++){
-            let cellNumber = parseInt(cell.innerHTML)
-            console.log(cellNumber)
-            
-            if(arrayBomb.includes(cellNumber)){
-                cell.classList.add('bg-bomb')
+        // aggiungo evento ascolto sulla singola cella con classe .cell
+        cell.addEventListener('click', function () {
+
+            if (gameOver === false) { // Se il gioco non è ancora finito
+                let cellNumber = parseInt(cell.innerHTML);
+                let counterPoint = document.querySelector('.counter')
+                let point = counterPoint.textContent;
+
+                if (arrayBomb.includes(cellNumber)) { // Abbiamo trovato una bomba
+                    cell.classList.add('bg-bomb');
+                    counterPoint.textContent = 'GAME OVER'
+                    gameOver = true;
+                } else {
+                    cell.classList.toggle('bg-change')
+                    point++
+                    counterPoint.textContent = point
+                }
+
+                
+                
+
+                console.log(arrayBomb)
+
+                // stampo in console numero casella
+                console.log('cella cliccata n: ' + cellNumber);
             }
 
             
 
-                
-            
-        }
-        cell.classList.toggle('bg-change')
-        console.log(arrayBomb)
-    
+        })
         
-    
-    // stampo in console numero casella
-    console.log ('cella cliccata n: ' + cell.innerHTML)
-    })
 
-    
-    // creo un array vuoto che dovrà essere riempito di numeri
-    
-    
-}
-// creo una funzione al di fuori del primo ciclo for
-// lo scopo è quello di generare dei numeri random
-// usando come range di riferimento la value dela select
-function generateRandomNumber(range){
-   let randomNumber = Math.floor(Math.random()* range + 1)
-   return randomNumber
-}
+        
+        
 
 
-//  dichiaro array vuoto che sarà riempito di numeri
- const arrayBomb = []; // array da riempire
-//  creo variabile del numero di bombe -1 che creo
- const numberOfBomb = 17;
-// creo ciclo che mi pusha all'interno dell'array i numeri random
-// rifrimento numberOfBomb
- for(let j = 1; j < numberOfBomb; j++){
-    // invoco la funzione che mi genera i numeri random
-    let rangeBomb = generateRandomNumber(interation)
-    // pusho i numeri random generati dalla funzione
-    arrayBomb.push(rangeBomb)
-    // creo ciclo che legge array per vedere se ci sono numeri uguali
-    for(let k = 0; k < arrayBomb.length; k++){
-        if(arrayBomb.includes(k === k)){
-            arrayBomb.push(rangeBomb)
-        }
+        
+
+
+    }
+    // creo una funzione al di fuori del primo ciclo for
+    // lo scopo è quello di generare dei numeri random
+    // usando come range di riferimento la value dela select
+    function generateRandomNumber(range) {
+        let randomNumber = Math.floor(Math.random() * range + 1)
+        return randomNumber
     }
 
-    
-    
-}
+
+    //  dichiaro array vuoto che sarà riempito di numeri
+    const arrayBomb = []; // array da riempire
+    //  creo variabile del numero di bombe -1 che creo
+    const numberOfBomb = 17;
+    // creo ciclo che mi pusha all'interno dell'array i numeri random
+    // rifrimento numberOfBomb
+    for (let j = 1; j < numberOfBomb; j++) {
+        // invoco la funzione che mi genera i numeri random
+        let rangeBomb = generateRandomNumber(interation)
+        // pusho i numeri random generati dalla funzione
+        arrayBomb.push(rangeBomb)
+        // creo ciclo che legge array per vedere se ci sono numeri uguali
+        for (let k = 0; k < arrayBomb.length; k++) {
+            if (arrayBomb.includes(k === k)) {
+                arrayBomb.push(rangeBomb)
+            }
+        }
+
+
+
+    }
 
 
 
