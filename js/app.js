@@ -51,6 +51,7 @@ let boxCell = document.querySelector('.main-box')
             let cell = document.createElement('button')
             // gli stampo il suo numero
             cell.innerHTML += [i]
+            
         
            if(interation === 50){
             cell.classList.add('level-3')
@@ -71,8 +72,21 @@ let boxCell = document.querySelector('.main-box')
 
     // aggiungo evento ascolto sulla singola cella con classe .cell
     cell.addEventListener('click', function(){
-    // aggiungo e tolgo classe che cambia colore
-    cell.classList.toggle('bg-change')
+        for(let p = 1; p < arrayBomb.length; p++){
+            let cellNumber = parseInt(cell.innerHTML)
+            console.log(cellNumber)
+            
+            if(arrayBomb.includes(cellNumber)){
+                cell.classList.add('bg-bomb')
+            }else{
+                cell.classList.toggle('bg-change')
+            }
+            
+            
+        }
+    
+        
+    
     // stampo in console numero casella
     console.log ('cella cliccata n: ' + cell.innerHTML)
     })
@@ -82,21 +96,27 @@ let boxCell = document.querySelector('.main-box')
     
     
 }
-
+// creo una funzione al di fuori del primo ciclo for
+// lo scopo è quello di generare dei numeri random
+// usando come range di riferimento la value dela select
 function generateRandomNumber(range){
-   let randomNumber = Math.floor(Math.random()* range)
+   let randomNumber = Math.floor(Math.random()* range + 1)
    return randomNumber
 }
 
 
-
+//  dichiaro array vuoto che sarà riempito di numeri
  const arrayBomb = []; // array da riempire
+//  creo variabile del numero di bombe -1 che creo
  const numberOfBomb = 17;
-
+// creo ciclo che mi pusha all'interno dell'array i numeri random
+// rifrimento numberOfBomb
  for(let j = 1; j < numberOfBomb; j++){
+    // invoco la funzione che mi genera i numeri random
     let rangeBomb = generateRandomNumber(interation)
+    // pusho i numeri random generati dalla funzione
     arrayBomb.push(rangeBomb)
-
+    // creo ciclo che legge array per vedere se ci sono numeri uguali
     for(let k = 0; k < arrayBomb.length; k++){
         if(arrayBomb.includes(k === k)){
             arrayBomb.push(rangeBomb)
@@ -106,7 +126,7 @@ function generateRandomNumber(range){
     
     
 }
-console.log(arrayBomb)
+
 
 
 

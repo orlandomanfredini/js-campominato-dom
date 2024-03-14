@@ -83,3 +83,6 @@
     cursor: pointer;
 }
 
+.bg-bomb{
+    background-color: rgb(176, 82, 82);
+}
