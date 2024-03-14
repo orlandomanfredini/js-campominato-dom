@@ -20,24 +20,22 @@ console.log(btnStart)
 // creo collegamento con main-box dove inserirò le celle
 let boxCell = document.querySelector('.main-box')
 
-// creo collegamento con la select di difficoltà
 
-    // creo numero di iterazioni che voglio
-
- // creo ciclo per riempire main-box con celle numerate
     
     
      
     // creo ascolto evento clic sul button gioca ora
+    // da questo ascolto ne conseguono tutte le logiche 
     btnStart.addEventListener('click', function(){
-
+        // creo collegamento con la select (quando l'utente clicca sul button, js legge la value della select)
         let interation = parseInt(document.getElementById('select').value); // dom element
         console.log(select)
-
+        // dichiaro l'elemento del dom (dove appendo la griglia) stringa vuota
+        // cosi se cambio valore della select mi genera una griglia nuova che sosrituisce la precedente
         boxCell.innerHTML='';
         
         
-        
+        // creo ciclo in relazione della value della select 
         for(let i = 1; i < interation; i++){
             // creo elemento dom
             let cell = document.createElement('button')
