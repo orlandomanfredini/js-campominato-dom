@@ -72,18 +72,21 @@ let boxCell = document.querySelector('.main-box')
 
     // aggiungo evento ascolto sulla singola cella con classe .cell
     cell.addEventListener('click', function(){
-        for(let p = 1; p < arrayBomb.length; p++){
+        for(let p = 0; p < arrayBomb.length; p++){
             let cellNumber = parseInt(cell.innerHTML)
             console.log(cellNumber)
             
             if(arrayBomb.includes(cellNumber)){
                 cell.classList.add('bg-bomb')
-            }else{
-                cell.classList.toggle('bg-change')
             }
+
             
+
+                
             
         }
+        cell.classList.toggle('bg-change')
+        console.log(arrayBomb)
     
         
     
