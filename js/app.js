@@ -96,12 +96,19 @@ function generateRandomNumber(range){
  for(let j = 1; j < numberOfBomb; j++){
     let rangeBomb = generateRandomNumber(interation)
     arrayBomb.push(rangeBomb)
+
+    for(let k = 0; k < arrayBomb.length; k++){
+        if(arrayBomb.includes(k === k)){
+            arrayBomb.push(rangeBomb)
+        }
+    }
+
     
-       
-
+    
 }
-
 console.log(arrayBomb)
+
+
 
 })
 
