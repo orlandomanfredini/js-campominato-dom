@@ -1,0 +1,85 @@
+.main-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.btn-start{
+    border-radius: 5px;
+    background-color: transparent;
+    border: 1px solid cornflowerblue;
+    padding: 5px;
+    font-size: 15px;
+}
+
+.title{
+  color: cornflowerblue;
+  text-align: center;
+
+}
+
+#select-difficult {
+    padding: 4px;
+    background-color: transparent;
+    border-radius: 5px;
+    border: 1px solid cornflowerblue;
+    font-size: 15px;
+}
+.container{
+    background-color: #3c6154;
+    border-radius: 10px;
+    height: 600px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-box{
+    width: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    aspect-ratio: 1;
+    justify-content: center;
+    
+}
+
+.cell{
+    width: calc(100% / 10 - 2px);
+    aspect-ratio: 1;
+    border: 1px solid black;
+    align-self: flex-start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.bg-change{
+    background-color: #5e84a8;
+}
+
+.level-2{
+    width: calc(100% / 9 - 2px);
+    aspect-ratio: 1;
+    border: 1px solid black;
+    align-self: flex-start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.level-3{
+    width: calc(100% / 7 - 2px);
+    aspect-ratio: 1;
+    border: 1px solid black;
+    align-self: flex-start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
