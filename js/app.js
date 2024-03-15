@@ -91,8 +91,8 @@ btnStart.addEventListener('click', function () {
                     
                     let allCell = document.getElementsByClassName('cell'); //array di div
                     let totalCellBlue = interation - 16; //number
-                    let areAllFull = false;
-                    if(allCell.length === totalCellBlue){
+                    let areaAllFull = true;
+                    if(allCell.length === totalCellBlue && areaAllFull === true){
                         arrayBomb.classList.add('bg-bomb')
                     }
                     
@@ -126,22 +126,18 @@ btnStart.addEventListener('click', function () {
     //  dichiaro array vuoto che sarà riempito di numeri
     const arrayBomb = []; // array da riempire
     //  creo variabile del numero di bombe -1 che creo
-    const numberOfBomb = 17;
+    const numberOfBomb = 16;
 
     let arrayContainsSameNumber = false
     // creo ciclo che mi pusha all'interno dell'array i numeri random
     // rifrimento numberOfBomb
-    for (let j = 1; j < numberOfBomb; j++) {
+    while(arrayBomb.length < numberOfBomb) {
         // invoco la funzione che mi genera i numeri random
         let rangeBomb = generateRandomNumber(interation)
-        if(!arrayBomb.includes(rangeBomb) && arrayContainsSameNumber === false){
+        
+        if(!arrayBomb.includes(rangeBomb) && arrayBomb.length < numberOfBomb){
             arrayBomb.push(rangeBomb)
-        }else{
-            while(arrayBomb.includes(rangeBomb) && arrayContainsSameNumber === true){
-                  let rangeBomb = generateRandomNumber(interation)
-                  arrayBomb.push(rangeBomb)
-                }
-                
+            
         }
         
         
