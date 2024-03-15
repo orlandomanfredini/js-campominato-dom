@@ -88,6 +88,14 @@ btnStart.addEventListener('click', function () {
                     cell.classList.toggle('bg-change')
                     point++
                     counterPoint.textContent = point
+                    
+                    let allCell = document.getElementsByClassName('cell'); //array di div
+                    let totalCellBlue = interation - 16; //number
+                    let areAllFull = false;
+                    if(allCell.length === totalCellBlue){
+                        arrayBomb.classList.add('bg-bomb')
+                    }
+                    
                 }
 
                 
@@ -112,33 +120,31 @@ btnStart.addEventListener('click', function () {
 
 
     }
-    // creo una funzione al di fuori del primo ciclo for
-    // lo scopo è quello di generare dei numeri random
-    // usando come range di riferimento la value dela select
-    function generateRandomNumber(range) {
-        let randomNumber = Math.floor(Math.random() * range + 1)
-        return randomNumber
-    }
+    
 
 
     //  dichiaro array vuoto che sarà riempito di numeri
     const arrayBomb = []; // array da riempire
     //  creo variabile del numero di bombe -1 che creo
     const numberOfBomb = 17;
+
+    let arrayContainsSameNumber = false
     // creo ciclo che mi pusha all'interno dell'array i numeri random
     // rifrimento numberOfBomb
     for (let j = 1; j < numberOfBomb; j++) {
         // invoco la funzione che mi genera i numeri random
         let rangeBomb = generateRandomNumber(interation)
-        // pusho i numeri random generati dalla funzione
-        arrayBomb.push(rangeBomb)
-        // creo ciclo che legge array per vedere se ci sono numeri uguali
-        for (let k = 0; k < arrayBomb.length; k++) {
-            if (arrayBomb.includes(k === k)) {
-                arrayBomb.push(rangeBomb)
-            }
+        if(!arrayBomb.includes(rangeBomb) && arrayContainsSameNumber === false){
+            arrayBomb.push(rangeBomb)
+        }else{
+            while(arrayBomb.includes(rangeBomb) && arrayContainsSameNumber === true){
+                  let rangeBomb = generateRandomNumber(interation)
+                  arrayBomb.push(rangeBomb)
+                }
+                
         }
-
+        
+        
 
 
     }
@@ -153,7 +159,15 @@ btnStart.addEventListener('click', function () {
 
 
 
+// utiity
 
+// creo una funzione al di fuori del primo ciclo for
+    // lo scopo è quello di generare dei numeri random
+    // usando come range di riferimento la value dela select
+    function generateRandomNumber(range) {
+        let randomNumber = Math.floor(Math.random() * range + 1)
+        return randomNumber
+    }
 
 
 
